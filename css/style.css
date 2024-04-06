@@ -78,6 +78,9 @@ small {
     font-size: 0.68rem;
 
 }
+.container{
+
+}
 
 .profile-photo {
     width: 2.8rem;
@@ -105,7 +108,4 @@ b{
 }
 .warning {
     color:var(--color-warning)
-}
-aside{
-    
 }
