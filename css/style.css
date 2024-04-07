@@ -116,11 +116,11 @@ b{
 }
 aside {
     height: 100vh;
-    background: grey;
+    
 
 }
 aside .top{
-    background: white;
+    
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -129,7 +129,7 @@ aside .top{
 aside .logo{
     display: flex;
     gap: 0.8rem;
-
+margin-left: 1rem;
 
 }
 aside .logo img{
@@ -144,7 +144,7 @@ aside .close{
 /* ===================================   SIDEBAR   ============================================= */
 
 aside .sidebar{
-    background: white;
+   
     display: flex;
     flex-direction: column;
     height: 86vh;
@@ -164,5 +164,50 @@ aside .sidebar a {
     align-items: center;
     position: relative;
     height: 3.7rem;
+    transition: all 300ms ease;
+}
+aside .sidebar a span {
+    font-size: 1.6rem;
+    transition: all 300ms ease;
+}
+
+aside .sidebar a:last-child {
+    position: absolute;
+    bottom: 2rem;
+    width:100%;
+    color: var(--color-danger);
+}
+
+aside .sidebar a.active {
+    background: var(--color-light);
+    color: var(--color-primary);
+    margin-left: 0;
+    width: 100%;
+}
+aside .sidebar a.active:before {
+    content: "";
+    width: 6px;
+    height: 100%;
+    background: var(--color-primary);
+}
+
+aside .sidebar a.active span {
+    color: var(--color-primary);
+    margin-left: calc(1rem - 4px);
+}
+
+aside .sidebar a:hover {
+    color: var(--color-primary);
+}
+aside .sidebar a:hover span {
+    margin-left: 1rem;
+}
+aside .sidebar .message-count {
+    background: var(--color-danger);
+    color: var(--color-white);
+    padding: 2px 5px;
+    font-size: 11px;
+    border-radius: var(--border-radius-1);
+    margin: 5px;
 
 }
