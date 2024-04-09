@@ -76,7 +76,7 @@ img {
 h1 {
     font-weight: 800;
     font-size: 1.8rem;
-
+text-align: center;
 }
 h2 {
     font-size: 1.4rem;
@@ -232,7 +232,9 @@ aside .sidebar .message-count {
 main {
     margin-top: 1.4rem;
 }
-
+main h1 {
+    text-align: center;
+}
 main .insights {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
