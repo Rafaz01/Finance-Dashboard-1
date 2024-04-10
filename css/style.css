@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
 /*------ROOT VARIABLES--------*/
 :root {
     --color-primary:    #7380ec;
@@ -332,18 +334,18 @@ main .insights small {
 /* =====================  END OF MAIN =============================== */
 
 /*****RIGHT START HERE*****/
-.right {
+section .right {
     margin-top: 1.6rem;
 }
-.right .top {
+section .right .top {
     display: flex;
     justify-content: end;
     gap: 2rem;
 }
-.right .top button { 
+section .right .top button { 
     display: none;
 }
-.right .theme-toggler {
+section .right .theme-toggler {
     background: var(--color-light);
     display: flex;
     justify-content: space-between;
@@ -353,7 +355,7 @@ main .insights small {
     cursor: pointer;
     border-radius: var(--border-radius-1);
 }
-.right .theme-toggler span {
+section .right .theme-toggler span {
     font-size: 1.2rem;
     width: 50%;
     height: 100%;
@@ -361,8 +363,30 @@ main .insights small {
     align-items: center;
     justify-content: center;
 }
-.right .theme-toggler span.active {
+section .right .theme-toggler span.active {
 background: var(--color-primary);
 color: white;
 border-radius: var(--border-radius-1);
 }
+
+
+
+
+.footer {
+  position:absolute;
+  width: 100%;
+  background: var(--color-primary-variant);
+  min-height: 50px;
+  padding: 5px 10px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.footer p {
+    color: #fff;
+    margin: 5px 0 7px 0;
+    font-size: 1rem;
+    font-weight: 300;
+  }

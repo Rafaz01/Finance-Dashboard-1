@@ -37,13 +37,33 @@ function loadTradingViewWidget(theme) {
                 proName: "NASDAQ:AAPL"
             },
             {
-                description: "Berkshire Hathaway",
+                description: "Berkshire B",
                 proName: "NYSE:BRK.B"
             },
             {
                 description: "AMD",
                 proName: "NASDAQ:AMD"
-            }
+            },
+            {
+                "proName": "FOREXCOM:SPXUSD",
+                "title": "S&P 500 Index"
+              },
+              {
+                "description": "Tesla",
+                "proName": "NASDAQ:TSLA"
+              },
+              {
+                "description": "Meta",
+                "proName": "NASDAQ:META"
+              },
+              {
+                "description": "QQQ",
+                "proName": "NASDAQ:QQQ"
+              },
+              {
+                "description": "Amazon",
+                "proName": "NASDAQ:AMZN"
+              }
         ],
         showSymbolLogo: true,
         isTransparent: false,
