@@ -14,20 +14,21 @@
     <!-- Material icon-->
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 </head>
-<nav>
 <!-- TradingView Widget BEGIN -->
+<nav>
 <div class="tradingview-widget-container">
     <div class="tradingview-widget-container__widget"></div>
     <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
   </div>
 </nav>
+<!-- TradingView Widget BEGIN -->
 <body>
     <div class ="container">
     <aside>
 <div class = "top">
     <div class="logo">
         <img src="images/logo.png">
-        <h2>Finance <spa class="danger">Manager</span></h2>
+        <h2>Finance <spa class="success">Manager</span></h2>
 <div class="close" id="close-btn">
     <span class="material-icons">close</span>
 </div>
@@ -126,11 +127,35 @@
                 <small class = "text-muted">Last 24 hours</small>
             </div>
             <!---------Budget---------->
-            
+            <div class="wrapper">
+            <div class="total-amount-container">
+            <h3>Budget</h3>
+            <p class = "hide error" id="budget-error">value cannot be empty or negative</p>
+            <input type= "number" id="total-amount" placeholder="Enter Total Amount"/>
+            <button class="submit" id = "total-amount-button">Set budget</button>
+            </div>
+            <!-------Expenses--------->
+        <div class="user-amount-container">
+            <h3>Expenses</h3>
+            <p class="hide error" id="product-title-error">values cannot be empty</p>
+            <input type="text" class="product-title" id="product-title" placeholder="enter title of pruduct"/>
+            <input type="number" id="'user-amount" placeholder="Enter Cost of Product"/>
+            <button class="submit" id="check-amount">Check Amount</button>
         </div>
+            </div>
+        <!----List--->
+        <div class="list">
+            <h3>Expenses list</h3>
+            <div class="list-container" id="list">
+
+            </div>
+
+
+        </div>
+
+    </div>
     </main>
         <!----------------END OF MAIN------------------->
-<section>
 <div class="right">
     <!-----------------------Right start here-->
     <div class="top">
@@ -145,8 +170,9 @@
     </div>
 </div>
 <!-----------------------End of top-->
-</section>
-</div>
+
+</div> <!------end of container-->
+</body>
 <footer class="footer">
     
     <p>&copy;2024 Rafael Gomez | All Rights Reserved</p>

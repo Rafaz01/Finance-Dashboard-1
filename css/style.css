@@ -4,7 +4,7 @@
 :root {
     --color-primary:    #7380ec;
     --color-danger: #ff7782;
-    --color-success:#41f1b6;
+    --color-success:#06ca51;
     --color-warning:    #ffbb55;
     --color-white:      #fff;
     --color-info-dark:  #7d8da1;
@@ -330,22 +330,54 @@ main .insights small {
     margin-top: 1.3rem;
     display: block;
 }
+main .wrapper {
+    width: 100%;
+    margin:auto;
+    display: block;
+    align-items: center;
+    gap: 3em;
+}
+main .wrapper input {
+    display: block;
+    width: auto;
+    padding: 0.6em;
+    border: 1px solid var(--color-dark);
+    border-radius: var(--border-radius-1);
+    background-color: var(--color-background);
+    color: var(--color-dark);
+    outline: none;
+}
+main .wrapper:focus {
+    border-color: var(--color-primary);
+}
+main .wrapper button {
+    padding: 0.5rem;
+    margin: 0.8rem;
+    background-color: var(--color-danger);
+    color: var(--color-primary-variant);
+    border-radius: var(--border-radius-2);
+
+}
+main .wrapper button:hover {
+    color: var(--color-primary-variant);
+    box-shadow: var(--box-shadow);
+}
 
 /* =====================  END OF MAIN =============================== */
 
-/*****RIGHT START HERE*****/
-section .right {
+/*======RIGHT START HERE======*/
+.right {
     margin-top: 1.6rem;
 }
-section .right .top {
+.right .top {
     display: flex;
     justify-content: end;
     gap: 2rem;
 }
-section .right .top button { 
+.right .top button { 
     display: none;
 }
-section .right .theme-toggler {
+.right .theme-toggler {
     background: var(--color-light);
     display: flex;
     justify-content: space-between;
@@ -355,7 +387,7 @@ section .right .theme-toggler {
     cursor: pointer;
     border-radius: var(--border-radius-1);
 }
-section .right .theme-toggler span {
+.right .theme-toggler span {
     font-size: 1.2rem;
     width: 50%;
     height: 100%;
@@ -363,7 +395,7 @@ section .right .theme-toggler span {
     align-items: center;
     justify-content: center;
 }
-section .right .theme-toggler span.active {
+.right .theme-toggler span.active {
 background: var(--color-primary);
 color: white;
 border-radius: var(--border-radius-1);
