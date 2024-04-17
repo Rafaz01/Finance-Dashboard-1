@@ -1,0 +1,54 @@
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+public class AccountManager extends Application {
+
+    @Override
+    public void start(Stage primaryStage) {
+        // Create UI components
+        TextField accountNumberField = new TextField();
+        PasswordField passwordField = new PasswordField();
+        Label securityQuestionLabel = new Label("Security Question");
+        TextField securityAnswerField = new TextField();
+        Button lookupButton = new Button("Lookup");
+        Button clearButton = new Button("Clear");
+        Button exitButton = new Button("Exit");
+        
+        // Layout
+        VBox layout = new VBox(10);
+        layout.getChildren().addAll(accountNumberField, passwordField, securityQuestionLabel, securityAnswerField, lookupButton, clearButton, exitButton);
+
+        // Set event handlers
+        lookupButton.setOnAction(event -> handleLookup());
+        clearButton.setOnAction(event -> handleClear());
+        exitButton.setOnAction(event -> primaryStage.close());
+
+        // Scene and Stage
+        Scene scene = new Scene(layout, 300, 200);
+        primaryStage.setTitle("Account Manager");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    private void handleLookup() {
+        // Lookup logic
+    }
+
+    private void handleClear() {
+        // Clear fields logic
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+
+
+
+
+
+
+Explanation:
