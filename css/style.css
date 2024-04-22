@@ -3,6 +3,7 @@
 /*------ROOT VARIABLES--------*/
 :root {
     --color-primary:    #7380ec;
+    --color-secondary:   #2ad2f0;
     --color-danger: #ff7782;
     --color-success:#06ca51;
     --color-warning:    #ffbb55;
@@ -32,6 +33,8 @@
     --color-white: #202528;
     --color-dark: #edeffd;
     --color-dark-variant: #a3bdcc;
+    --color-info-light:#3f4144;
+    --color-primary-variant: #4da8f3;
     --color-light: rgba(0,0,0, 0.4);
     --box-shadow: 0 2rem 3rem var(--color-light)
 }
@@ -330,38 +333,107 @@ main .insights small {
     margin-top: 1.3rem;
     display: block;
 }
-main .wrapper {
-    width: 100%;
-    margin:auto;
-    display: block;
-    align-items: center;
-    gap: 3em;
+main .wrapper h1{
+    color: var(--color-secondary);
 }
-main .wrapper input {
-    display: block;
-    width: auto;
-    padding: 0.6em;
+
+main .position {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+main .position div:first-child { 
+    flex-basis: 100%;
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    
+}
+
+main .position div:nth-child(n + 2) { 
+    flex-basis: 50%;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #06ca51;
+    padding: 2rem;
+}
+
+main .wrapper > div span {
+    background: var(--color-dark);
+    padding: 0.2rem 1rem 0.5rem 1rem;
+    border-radius: var(--border-radius-2);
+    color: var(--color-secondary);
+    font-size: 1.2rem;
+}
+main .transactionList  {
+    margin-bottom: 10px;
+    color:  var(--color-primary-variant);
+}
+main .transactionList ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+main .transactionList ul li {
+    display: flex;
+    margin-bottom: 10px;
+    padding: 10px;
     border: 1px solid var(--color-dark);
     border-radius: var(--border-radius-1);
-    background-color: var(--color-background);
+    background-color: var(--color-light);
+    justify-content: space-between;
+    align-items: flex-start;
+}
+main .name {
+    flex: 1;
+}
+main .name h4 {
     color: var(--color-dark);
-    outline: none;
+    font-size: 0.8rem;
+    text-transform: capitalize;
 }
-main .wrapper:focus {
-    border-color: var(--color-primary);
+main .name p {
+    color: var(--color-dark-variant);
+    font-size: 0.8rem;
 }
-main .wrapper button {
-    padding: 0.5rem;
-    margin: 0.8rem;
-    background-color: var(--color-danger);
-    color: var(--color-primary-variant);
-    border-radius: var(--border-radius-2);
+main .amount {
+    font-weight: 600;
+}
 
+main .transaction  {
+    margin-bottom: 20px;
+    color:  red;
 }
-main .wrapper button:hover {
-    color: var(--color-primary-variant);
+
+
+form input, form button{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--color-info-dark);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    height: 42px;
+}
+form button {
+    background-color: var(--color-success);
+    color: var(--color-dark);
+    text-transform: uppercase;
     box-shadow: var(--box-shadow);
 }
+form label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+form div:first-child {
+    flex-basis: 100%;
+}
+form div:nth-child(n + 2) {
+    flex-basis: calc(50% - 5px);
+}
+
 
 /* =====================  END OF MAIN =============================== */
 

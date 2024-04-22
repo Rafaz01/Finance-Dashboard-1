@@ -70,89 +70,109 @@
 
   <!-- TradingView Widget END -->
         <div class="insights">
-            <div class="sales">
+            <div class="total-budget">
                 <span class="material-icons">analytics</span>
                 <div class="middle">
                     <div class="left">
-                        <h3>Total Sales</h3>
-                        <h1>$25,024</h1>
+                        <h3>Total Budget</h3>
+                        <h1 id="total-budget">$10,000</h1>
                     </div>
                     <div class="progress">
                         <svg>
                             <circle cx="38" cy="38" r="36"></circle>
                         </svg>
                         <div class="number">
-                            <p>81%</p>
+                            <p id="total-budget">100%</p>
                         </div>
                     </div>
                 </div>
                 <small class = "text-muted">Last 24 hours</small>
             </div>
-            <!---------------------end of sales-------------------------------->
+            <!---------------------end of budget-------------------------------->
             <div class="expenses">
                 <span class="material-icons">bar_chart</span>
                 <div class="middle">
                     <div class="left">
                         <h3>Total expenses</h3>
-                        <h1>$14,160</h1>
+                        <h1 id="total-expenses">$0</h1>
                     </div>
                     <div class="progress">
                         <svg>
                             <circle cx="38" cy="38" r="36"></circle>
                         </svg>
                         <div class="number">
-                            <p>62%</p>
+                            <p id="expenses-percentage">0%</p>
                         </div>
                     </div>
                 </div>
                 <small class = "text-muted">Last 24 hours</small>
             </div>
             <!-----------END OF EXPENSES--------------->
+
+             <!----------start of icome--------->
             <div class="income">
                 <span class="material-icons">trending_up</span>
                 <div class="middle">
                     <div class="left">
                         <h3>Total Income</h3>
-                        <h1>$10,240</h1>
+                        <h1 id="total-income">$0</h1>
                     </div>
                     <div class="progress">
                         <svg>
                             <circle cx="38" cy="38" r="36"></circle>
                         </svg>
                         <div class="number">
-                            <p>56%</p>
+                            <p id="income-percentage">0%</p>
                         </div>
                     </div>
                 </div>
                 <small class = "text-muted">Last 24 hours</small>
             </div>
-            <!---------Budget---------->
+            <!----------end of icome--------->
+
+            <!-- Wrapper-->
             <div class="wrapper">
-            <div class="total-amount-container">
-            <h3>Budget</h3>
-            <p class = "hide error" id="budget-error">value cannot be empty or negative</p>
-            <input type= "number" id="total-amount" placeholder="Enter Total Amount"/>
-            <button class="submit" id = "total-amount-button">Set budget</button>
+                <h1>Expense Tracker</h1>
+                <div class="position">
+                    <div>
+                    <h2>Total Balance</h2>
+                    <span id="balance">$0.00</span>
+                </div>
+                <div>
+                    <h3>Income</h3>
+                    <span id="income">$0.00</span>
+                </div>
+                <div>
+                    <h3>Expense</h3>
+                    <span id="expense">$0.00</span>
+                </div>
             </div>
-            <!-------Expenses--------->
-        <div class="user-amount-container">
-            <h3>Expenses</h3>
-            <p class="hide error" id="product-title-error">values cannot be empty</p>
-            <input type="text" class="product-title" id="product-title" placeholder="enter title of pruduct"/>
-            <input type="number" id="'user-amount" placeholder="Enter Cost of Product"/>
-            <button class="submit" id="check-amount">Check Amount</button>
         </div>
-            </div>
-        <!----List--->
-        <div class="list">
-            <h3>Expenses list</h3>
-            <div class="list-container" id="list">
-
-            </div>
+        <div class="transactionList">
+            <h1>Transactions</h1>
+            <ul id="transactionList"></ul>
+            <div id="status"></div>
 
 
         </div>
-
+    <div class="transaction">
+        <h1>Add transaction</h1>
+        <form id="transactionForm">
+        <div>
+            <label for="name">Name</label>
+            <input type="text" name="name" required/>
+        </div>
+        <div>
+            <label for="amount">Amount</label>
+            <input type="number" name="amount" value="0" min= "0.01" step="0.01" required/>
+        </div>
+        <div>
+            <label for="date">Date</label>
+            <input type="date" name="date" required/>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    </div>
     </div>
     </main>
         <!----------------END OF MAIN------------------->
