@@ -1,0 +1,379 @@
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.text.NumberFormat;
+import java.util.Locale;
+
+public class AccountLookup extends Application {
+
+    private TextField accountNumberTextField;
+    private TextField passwordTextField;
+    private TextField securityQuestionTextField;
+    private TextField securityQuestionAnswerTextField;
+    private TextField balanceTextField;
+    private TextField statusTextField;
+    private TextField creditLimitTextField;
+
+    private Label accountNumberLabel;
+    private Label passwordLabel;
+    private Label securityQuestionLabel;
+    private Label securityQuestionAnswerLabel;
+    private Label balanceLabel;
+    private Label statusLabel;
+    private Label creditLimitLabel;
+
+    private Button lookupButton;
+    private Button submitButton;
+    private Button clearButton;
+    private Button exitButton;
+
+    private ImageView imageView;
+
+    private BorderPane borderPane;
+    private HBox hBox;
+    private VBox vBox;
+
+    private Text text;
+
+    private File file;
+    private RandomAccessFile randomAccessFile;
+
+    private NumberFormat numberFormat;
+
+    private int accountNumber;
+    private String password;
+    private String securityQuestion;
+    private String securityQuestionAnswer;
+    private double balance;
+    private char status;
+    private double creditLimit;
+
+    private String accountNumberString;
+    private String passwordString;
+    private String securityQuestionAnswerString;
+
+    private boolean accountNumberFound;
+
+    private final int ACC
+    private final int PWD
+    private final int SQ
+    private final int SQA
+    private final int BAL
+    private final int STA
+    private final int CLI
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) {
+        primaryStage.setTitle("Account Lookup");
+
+        accountNumberTextField = new TextField();
+        passwordTextField = new TextField();
+        securityQuestionTextField = new TextField();
+        securityQuestionAnswerTextField = new TextField();
+        balanceTextField = new TextField();
+        statusTextField = new TextField();
+        creditLimitTextField = new TextField();
+
+        accountNumberLabel = new Label("Account Number");
+        passwordLabel = new Label("Password");
+        securityQuestionLabel = new Label("Security Question");
+        securityQuestionAnswerLabel = new Label("Security Question Answer");
+        balanceLabel = new Label("Balance");
+        statusLabel = new Label("Status");
+        creditLimitLabel = new Label("Credit Limit");
+
+        lookupButton = new Button("Lookup");
+        submitButton = new Button("Submit");
+        clearButton = new Button("Clear");
+        exitButton = new Button("Exit");
+
+        imageView = new ImageView(new Image("file:src/images/account
+        lookup.png"));
+
+        borderPane = new BorderPane();
+        hBox = new HBox();
+        vBox = new VBox();
+
+        text = new Text("Account Lookup");
+        text.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+
+        numberFormat = NumberFormat.getCurrencyInstance(Locale.US);
+
+        accountNumber = 0;
+        password = "";
+        securityQuestion = "";
+        securityQuestionAnswer = "";
+        balance = 0.0;
+        status = ' ';
+        creditLimit = 0.0;
+
+        accountNumberString = "";
+        passwordString = "";
+        securityQuestionAnswerString = "";
+
+        accountNumberFound = false;
+
+        ACC = 0;
+        PWD = 1;
+        SQ = 2;
+        SQA = 3;
+        BAL = 4;
+        STA = 5;
+        CLI = 6;
+
+        lookupButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    accountNumberString = accountNumberTextField.getText();
+                    passwordString = passwordTextField.getText();
+
+                    if (accountNumberString.equals("")) {
+                        throw new EmptyAcctIDException();
+                        }
+
+                    accountNumber = Integer.parseInt(accountNumberString);
+
+                    if (accountNumber < 0) {
+                        throw new NegativeAcctIDException();
+                        }
+
+                    if (passwordString.equals("")) {
+                        throw new EmptyPasswordException();
+                        }
+
+                    file = new File("src/Account.dat");
+                    randomAccessFile = new RandomAccessFile(file, "r");
+
+                    while (randomAccessFile.getFilePointer() < randomAccessFile.length()) {
+                        if (accountNumber == randomAccessFile.readInt()) {
+                            accountNumberFound = true;
+                            password = randomAccessFile.readUTF();
+                            securityQuestion = randomAccessFile.readUTF();
+                            securityQuestionAnswer = randomAccessFile.readUTF();
+                            balance = randomAccessFile.readDouble();
+                            status = randomAccessFile.readChar();
+                            creditLimit = randomAccessFile.readDouble();
+                            break;
+                            }
+                        else {
+                            randomAccessFile.readUTF();
+                            randomAccessFile.readUTF();
+                            randomAccessFile.readUTF();
+                            randomAccessFile.readDouble();
+                            randomAccessFile.readChar();
+                            randomAccessFile.readDouble();
+                            }
+                        }
+
+                    if (!accountNumberFound)
+                        throw new InvalidAccountException();
+
+                    if (!passwordString.equals(password))
+                        throw new InvalidPasswordException();
+
+                    securityQuestionTextField.setText(securityQuestion);
+                    securityQuestionTextField.setEditable(false);
+                    }
+                catch (EmptyAcctIDException e) {
+                    e.printStackTrace();
+                    }
+                catch (NegativeAcctIDException e) {
+                    e.printStackTrace();
+                    }
+                catch (InvalidAccountException e) {
+                    e.printStackTrace();
+                    }
+                catch (EmptyPasswordException e) {
+                    e.printStackTrace();
+                    }
+                catch (InvalidPasswordException e) {
+                    e.printStackTrace();
+                    }
+                catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                    }
+                catch (IOException e) {
+                    e.printStackTrace();
+                    }
+                }
+            });
+
+        submitButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    securityQuestionAnswerString = securityQuestionAnswerTextField.getText();
+
+                    if (securityQuestionAnswerString.equals("")) {
+                        throw new EmptySQAnswerException();
+                       
+                        }
+
+                    if (!securityQuestionAnswerString.equals(securityQuestionAnswer)) {
+                        throw new InvalidSQAnswerException();
+                        }
+
+                    balanceTextField.setText(numberFormat.format(balance));
+                    balanceTextField.setEditable(false);
+
+                    if (status == 'A')
+                        statusTextField.setText("Active");
+                    else if (status == 'D')
+                        statusTextField.setText("Delinquent");
+                    else if (status == 'C')
+                        statusTextField.setText("Closed");
+                    else
+                        throw new InvalidStatusException();
+
+                    statusTextField.setEditable(false);
+
+                    creditLimitTextField.setText(numberFormat.format(creditLimit));
+                    creditLimitTextField.setEditable(false);
+                    }
+                catch (EmptySQAnswerException e) {
+                    e.printStackTrace();
+                    }
+                catch (InvalidSQAnswerException e) {
+                    e.printStackTrace();
+                    }
+                catch (InvalidStatusException e) {
+                    e.printStackTrace();
+                    }
+                }
+            });
+
+        clearButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                accountNumberTextField.setText
+                ("");
+                passwordTextField.setText("");
+                securityQuestionTextField.setText("");
+                securityQuestionAnswerTextField.setText("");
+                balanceTextField.setText("");
+                statusTextField.setText("");
+                creditLimitTextField.setText("");
+                }
+            });
+
+        exitButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.exit(0);
+                }
+            });
+
+        hBox.getChildren().addAll(lookupButton, submitButton, clearButton, exitButton);
+        hBox.setAlignment(Pos.CENTER);
+        hBox.setSpacing(10);
+        hBox.setPadding(new Insets(10, 10, 10, 10));
+
+        vBox.getChildren().addAll(accountNumberLabel, accountNumberTextField, passwordLabel, passwordTextField, securityQuestionLabel, securityQuestionTextField, securityQuestionAnswerLabel, securityQuestionAnswerTextField, balanceLabel, balanceTextField, statusLabel, statusTextField, creditLimitLabel, creditLimitTextField);
+        vBox.setAlignment(Pos.CENTER);
+        vBox.setSpacing(10);
+        vBox.setPadding(new Insets(10,
+        10, 10, 10));
+
+        borderPane.setTop(text);
+        borderPane.setCenter(vBox);
+        borderPane.setBottom(hBox);
+        borderPane.setLeft(imageView);
+
+        Scene scene = new Scene(borderPane, 500, 500);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+        }
+    }
+    
+    class EmptyAcctIDException extends Exception {
+        public EmptyAcctIDException() {
+            super("Account number is empty.");
+            }
+        }
+    
+    class NegativeAcctIDException extends Exception {
+        public NegativeAcctIDException() {
+            super("Account number is negative.");
+            }
+        }
+    
+    class InvalidAccountException extends Exception {
+        public InvalidAccountException() {
+            super("Account number is invalid.");
+            }
+        }
+    
+    class EmptyPasswordException extends Exception {
+        public EmptyPasswordException() {
+            super("Password is empty.");
+            }
+        }
+    
+    class InvalidPasswordException extends Exception {
+        public InvalidPasswordException() {
+            super("Password is invalid.");
+            }
+        }
+    
+    class EmptySQAnswerException extends Exception {
+        public EmptySQAnswerException() {
+            super("Security question answer is empty.");
+            }
+        }
+    
+    class InvalidSQAnswerException extends Exception {
+        public InvalidSQAnswerException() {
+            super("Security question answer is invalid.");
+            }
+        }
+    
+    class InvalidStatusException extends Exception {
+        public InvalidStatusException() {
+            super("Status is invalid.");
+            }
+        }
+        
+    }
+Explanation:
+1. The program is asking for an account number and password.
+
+2. If the account number is empty, it will throw an exception.
+
+3. If the account number is negative, it will throw an exception.
+
+4. If the account number is invalid, it will throw an exception.
+
+5. If the password is empty, it will throw an exception.
+
+6. If the password is invalid, it will throw an exception.
+
+7. If the security question answer is empty, it will throw an exception.
+
+8. If the security question answer is invalid, it will throw an exception.
+
+9. If the status is invalid, it will throw an exception
