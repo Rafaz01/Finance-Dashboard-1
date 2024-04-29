@@ -240,13 +240,13 @@ main {
 main h1 {
     text-align: center;
 }
-main .insights {
+main .insights  {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.6rem;
 }
 
-main .insights > div {
+main .insights  > div {
     background: var(--color-white);
     padding: var(--card-padding);
     border-radius: var(--card-border-radius);
@@ -259,7 +259,7 @@ main .insights >div:hover {
     box-shadow: none;
 }
 
-main .insights > div span {
+main .insights .total-budget >  span {
     background: var(--color-primary);
     padding: 0.5rem;
     border-radius: 50%;
@@ -267,16 +267,24 @@ main .insights > div span {
     font-size: 2rem;
 }
 
-main .insights > div.expenses span {
+main .insights .expenses  > span {
     background-color: var(--color-warning);
+    padding: 0.5rem;
+    border-radius: 50%;
+    color: var(--color-white);
+    font-size: 2rem;
 }
 
-main .insights > div.income span
+main .insights .income-up  > span
 {
+    padding: 0.5rem;
+    border-radius: 50%;
+    color: var(--color-white);
+    font-size: 2rem;
     background-color: green;
 }
 
-main .insights > div .middle {
+main .insights  > div .middle {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -307,11 +315,11 @@ main .insights svg circle {
     stroke-dasharray: 110;
     stroke-dashoffset: 92;
 }
-main .insights .sales svg circle  {
+main .insights  .sales svg circle  {
     stroke-dashoffset: -30;
     stroke-dasharray: 200;
 }
-main .insights .expenses svg circle  {
+main .insights  .expenses svg circle  {
     stroke-dashoffset: 20;
     stroke-dasharray: 80;
 }
@@ -319,7 +327,7 @@ main .insights .income svg circle  {
     stroke-dashoffset: 35;
     stroke-dasharray: 110;
 }
-main .insights .progress .number {
+main .insights  .progress .number {
     position: absolute;
     top: 0;
     left: 0;
@@ -372,6 +380,10 @@ main .transactionList  {
     margin-bottom: 10px;
     color:  var(--color-primary-variant);
 }
+main .transactionList ul li > div span {
+    align-items: end;
+
+}
 main .transactionList ul {
     list-style-type: none;
     padding: 0;
@@ -387,6 +399,10 @@ main .transactionList ul li {
     justify-content: space-between;
     align-items: flex-start;
 }
+main .transactionList ul li:hover {
+    background: var();
+
+}
 main .name {
     flex: 1;
 }
@@ -396,16 +412,36 @@ main .name h4 {
     text-transform: capitalize;
 }
 main .name p {
-    color: var(--color-dark-variant);
     font-size: 0.8rem;
 }
 main .amount {
     font-weight: 600;
 }
 
+#status {
+    text-align: center;
+    margin-bottom: 10px;
+}
+main .amount.income {
+    color: yellowgreen;
+}
+.amount.expense {
+    color: red;
+}
+main .action {
+    position: flex;
+    align-items: flex-end;
+    background-color: var(--color-background);
+    color: var(--color-danger);
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 30px;
+
+}
 main .transaction  {
     margin-bottom: 20px;
-    color:  red;
+    color:  var(--color-danger);
 }
 
 

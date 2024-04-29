@@ -126,14 +126,15 @@ const transactions = [
         name: 'salary',
         amount: 5000,
         date: new Date(),
-        type:'income'
+        type:"income"
+        
     },
     {
         id: 2,
         name: 'haircut',
-        amount: 20,
+        amount: 200,
         date: new Date(),
-        type:'expense'
+        type:"expense"
     },
     {
         id: 3,
@@ -142,7 +143,6 @@ const transactions = [
         date: new Date(),
         type:'expense'
     }, 
-
 ];
 const formatter = new Intl.NumberFormat("en-US",{
     style: "currency",
@@ -171,7 +171,11 @@ function renderList() {
             </div>
 
             <div class="amount ${type}">
-                <p>${formatter.format(amount)}</p>
+                <span>${formatter.format(amount)}</span>
+            </div>
+            
+            <div class="action">
+            <span class="material-symbols-outlined">cancel</span>
             </div>
         `;
 
