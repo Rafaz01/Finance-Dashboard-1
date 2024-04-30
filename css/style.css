@@ -388,7 +388,8 @@ main .transaction {
 main .transactionList  {
     color:  var(--color-primary-variant);
     width: 100%;
-    height: 400px;
+    max-height: 400px;
+    overflow-y: auto;
 }
 main .transactionList ul li > div span {
     align-items: end;
@@ -398,6 +399,9 @@ main .transactionList ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minimax(200px,1fr));
+    gap: 1px;
 }
 main .transactionList ul li {
     display: flex;
@@ -408,6 +412,7 @@ main .transactionList ul li {
     background-color: var(--color-light);
     justify-content: space-between;
     align-items: flex-start;
+
 }
 main .transactionList ul li:hover {
     background: var(--box-shadow);
