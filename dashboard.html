@@ -77,7 +77,7 @@
                 <div class="middle">
                     <div class="left">
                         <h3>Total Budget</h3>
-                        <h1 id="total-budget">$10,000</h1>
+                        <h1 id="total-budget">$0.00</h1>
                     </div>
                     <div class="progress">
                         <svg>
@@ -96,7 +96,7 @@
                 <div class="middle">
                     <div class="left">
                         <h3>Total expenses</h3>
-                        <h1 id="total-expenses">$0</h1>
+                        <h1 id="total-expenses">$0.00</h1>
                     </div>
                     <div class="progress">
                         <svg>
@@ -117,7 +117,7 @@
                 <div class="middle">
                     <div class="left">
                         <h3>Total Income</h3>
-                        <h1 id="total-income">$0</h1>
+                        <h1 id="total-income">$0.00</h1>
                     </div>
                     <div class="progress">
                         <svg>
@@ -155,6 +155,19 @@
     <div class="transaction">
         <h1>Add transaction</h1>
         <form id="transactionForm">
+            <div>
+                <label for="type">
+                    <input type="checkbox" name="type" id="type" />
+                    <div class="option">
+                        <span>Expense</span>
+                        <span>Income</span>
+
+                    </div>
+                </label>
+
+
+
+            </div>
         <div>
             <label for="name">Name</label>
             <input type="text" name="name" required/>

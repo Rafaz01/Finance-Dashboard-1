@@ -341,8 +341,13 @@ main .insights small {
     margin-top: 1.3rem;
     display: block;
 }
+main .wrapper {
+    width: 100%;
+    height: 400px;
+}
 main .wrapper h1{
     color: var(--color-secondary);
+    margin-bottom: 30px;
 }
 
 main .position {
@@ -355,18 +360,18 @@ main .position {
 
 main .position div:first-child { 
     flex-basis: 100%;
-    font-size: 2.25rem;
+    font-size: 1.8rem;
     font-weight: 600;
     color: var(--color-primary);
     
 }
 
-main .position div:nth-child(n + 2) { 
+main  .position div:nth-child(n + 2) { 
     flex-basis: 50%;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 500;
     color: #06ca51;
-    padding: 2rem;
+    padding: 0.5rem;
 }
 
 main .wrapper > div span {
@@ -376,9 +381,14 @@ main .wrapper > div span {
     color: var(--color-secondary);
     font-size: 1.2rem;
 }
+main .transaction {
+    width: 100%;
+    height: 400px;
+}
 main .transactionList  {
-    margin-bottom: 10px;
     color:  var(--color-primary-variant);
+    width: 100%;
+    height: 400px;
 }
 main .transactionList ul li > div span {
     align-items: end;
@@ -400,7 +410,7 @@ main .transactionList ul li {
     align-items: flex-start;
 }
 main .transactionList ul li:hover {
-    background: var();
+    background: var(--box-shadow);
 
 }
 main .name {
@@ -431,21 +441,24 @@ main .amount.income {
 main .action {
     position: flex;
     align-items: flex-end;
-    background-color: var(--color-background);
     color: var(--color-danger);
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: 30px;
-
+    display: grid;
+    place-items: center;
+    transform: scaleX(0);
+    cursor: pointer;
 }
+main ul li:hover .action {
+    transform: scaleX(1);
+}
+
 main .transaction  {
-    margin-bottom: 20px;
-    color:  var(--color-danger);
+    color:  var(--color-primary);
 }
 
-
-form input, form button{
+form button {
+    cursor: pointer;
+}
+form input:not(#type), form button{
     width: 100%;
     padding: 10px;
     border: 1px solid var(--color-info-dark);
@@ -453,24 +466,60 @@ form input, form button{
     margin-bottom: 10px;
     height: 42px;
 }
-form button {
+main .transaction form button {
     background-color: var(--color-success);
     color: var(--color-dark);
     text-transform: uppercase;
     box-shadow: var(--box-shadow);
 }
-form label {
-    font-size: 0.75rem;
+.transaction form label {
+    font-size: 0.8rem;
     text-transform: uppercase;
 }
-form div:first-child {
+form div:first-child(n + 2) {
     flex-basis: 100%;
 }
 form div:nth-child(n + 2) {
     flex-basis: calc(50% - 5px);
 }
+main .transaction input#type {
+    appearance:none;
+    position: flex;
+}
+main .transaction .option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background: var(--color-info-dark);
+    border-radius: 5px;
+    position: relative;
+}
 
-
+main .option span {
+    width: 50%;
+    text-align: center;
+    cursor: pointer;
+    z-index: 2;
+    font-weight: 600;
+    color: var(--color-dark);
+}
+main .option::before {
+    content: '';
+    position:absolute;
+    top: 5px;
+    left: 0;
+    background-color: var(--color-white);
+    height: calc(100% - 10px);
+    width: calc(50% - 10px);
+    transform: translateX(5px);
+    border-radius: inherit;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.1);
+    transition: all 200ms;
+}
+input#type:checked ~ .option::before {
+    left: 50%;
+}
 /* =====================  END OF MAIN =============================== */
 
 /*======RIGHT START HERE======*/
@@ -502,12 +551,14 @@ form div:nth-child(n + 2) {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 .right .theme-toggler span.active {
 background: var(--color-primary);
 color: white;
 border-radius: var(--border-radius-1);
 }
+
 
 
 

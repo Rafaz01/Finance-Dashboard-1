@@ -117,14 +117,13 @@ themeToggler.addEventListener('click', toggleTheme);
 themeToggler.addEventListener('click', () => {
     document.body.classList.toggle('dark-theme-variables');
     themeToggler.querySelector('span').classList.toggle('active');
-    themeToggler.querySelector('span').classList.toggle('active');
 });
 //expense tracker
-const transactions = [
+const transactions = JSON.parse(localStorage.getItem("transactions")) || [
    {
         id: 1,
         name: 'salary',
-        amount: 5000,
+        amount: 3000,
         date: new Date(),
         type:"income"
         
@@ -151,7 +150,30 @@ const formatter = new Intl.NumberFormat("en-US",{
 
 })
 const list = document.getElementById("transactionList");
+const form = document.getElementById("transactionForm");
 const status = document.getElementById("status");
+const balance = document.getElementById("balance");
+const income = document.getElementById("income");
+const expense = document.getElementById("expense");
+
+form.addEventListener("submit",addTransaction);
+
+function updateTotal() {
+    const incomeTotal = transactions
+    .filter ((trx) => trx.type === "income")
+    .reduce((total,trx)=> total + trx.amount, 0);
+
+    const expenseTotal = transactions
+    .filter ((trx) => trx.type === "expense")
+    .reduce((total,trx)=> total + trx.amount, 0);
+
+    const balanceTotal = incomeTotal - expenseTotal;
+
+    balance.textContent = formatter.format(balanceTotal).substring(1);
+    income.textContent = formatter.format(incomeTotal);
+    expense.textContent = formatter.format(expenseTotal* -1);
+}
+
 
 function renderList() {
     list.innerHTML = "";
@@ -159,9 +181,14 @@ function renderList() {
     if (transactions.length === 0) {
         status.textContent = "No transactions.";
         return;
+    } else {
+        status.textContent = "";
     }
+    
 
     transactions.forEach(({ id, name, amount, date, type }) => {
+        const sign = 'income' === type ? 1 : -1;
+
         const li = document.createElement("li");
 
         li.innerHTML = `
@@ -171,11 +198,11 @@ function renderList() {
             </div>
 
             <div class="amount ${type}">
-                <span>${formatter.format(amount)}</span>
+                <span>${formatter.format(amount * sign)}</span>
             </div>
             
             <div class="action">
-            <span class="material-symbols-outlined">cancel</span>
+            <span class="material-symbols-outlined" onclick="deleteTransaction(${id})">cancel</span>
             </div>
         `;
 
@@ -184,3 +211,38 @@ function renderList() {
 }
 
 renderList();
+updateTotal();
+
+function deleteTransaction(id) {
+    const index = transactions.findIndex((trx) => trx.id === id);
+    transactions.splice(index,1);
+
+    updateTotal();
+    saveTransaction();
+    renderList();
+}
+function addTransaction(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+    transactions.push({
+    id : transactions.length + 1,
+    name : formData.get("name"),
+    amount : parseFloat(formData.get("amount")),
+    date: new Date(formData.get("date")),
+    type: 'on' === formData.get('type') ? "income" : "expense",
+    });
+
+    this.reset();
+
+    updateTotal();
+    saveTransaction();
+    renderList();
+}
+
+function saveTransaction() {
+ transactions.sort((a,b) => new Date(b.date) - new Date(a.date));
+ localStorage.setItem("transactions", JSON.stringify(transactions));
+}
+
+
