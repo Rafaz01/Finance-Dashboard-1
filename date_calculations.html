@@ -78,9 +78,17 @@
   <!-- TradingView Widget END -->
   
         <div class="insights">
+            
+            <div id="currentDate"></div>
+            <div id="futureDate"></div>
         
             <div class="total-budget">
-                
+                <h2>Date Calculator</h2>
+    <input type="text" id="datepicker" placeholder="Select a Date">
+    <button onclick="calculateDate()">Calculate 90 Days</button>
+    <div id="result"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/datepicker"></script>
                        
             </div>
             <!---------------------end of budget-------------------------------->
@@ -139,5 +147,6 @@
 
     <!-- Add any JavaScript libraries or scripts here -->
     <script src="scripts.js"></script>
+    <script src="date.js"></script>
 
 </html>

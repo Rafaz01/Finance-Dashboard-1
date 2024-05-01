@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finance Dashboard</title>
+    <title>Jquery</title>
     <link rel="icon" type="images/x-icon" href="/images/favicon.ico">
     <!-- Add any CSS libraries or stylesheets here -->
     <link rel="stylesheet" href="css/style.css">
@@ -13,6 +13,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Material icon-->
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="scripts.js"></script>
+    <script src="jquery.js"></script>
+    
 </head>
 <!-- TradingView Widget BEGIN -->
 <nav>
@@ -74,70 +81,79 @@
             
         <h1>Jquery</h1>
         
-
-  <!-- TradingView Widget END -->
-  
-        <div class="insights">
-        
-            <div class="total-budget">
-                
-                       
+    
+      <!-- TradingView Widget END -->
+      
+     <div class="insights">
+            
+                <div class="total-budget">
+                    
+                    
+                        <div id="pieChartContainer">
+                            <canvas id="expensePieChart" width="400" height="400"></canvas>
+                        </div>
+                    
+                        <div class="expenses">
+                        <div id="barChartContainer">
+                            <canvas id="incomeExpenseBarChart" width="400" height="400"></canvas>
+                        </div>
+                </div>
+                <!---------------------end of budget-------------------------------->
             </div>
-            <!---------------------end of budget-------------------------------->
-            <div class="expenses">
+                    
                 
-            </div>
-            <!-----------END OF EXPENSES--------------->
-
-             <!----------start of icome--------->
-            <div class="income-up">
+                <!-----------END OF EXPENSES--------------->
+    
+                 <!----------start of icome--------->
                 
+                
+                <!----------end of icome--------->
+    
+                <!-- Wrapper-->
+                <div class="wrapper">
+                    
             </div>
             
-            <!----------end of icome--------->
-
-            <!-- Wrapper-->
-            <div class="wrapper">
-                
+        <div class="transaction">
+            
         </div>
         
-    <div class="transaction">
-        
+    
+        </main>
+            <!----------------END OF MAIN------------------->
+    <div class="right">
+        <!-----------------------Right start here-->
+        <div class="top">
+    <button>
+        <button id="menu-btn">
+        <span class="material-icons">menu</span>
+    </button>
+    <div class="theme-toggler">
+        <span class="material-icons active">light_mode</span>
+        <span class="material-icons">dark_mode</span>
+    </div>
     </div>
     
-    </div>
-    </main>
-        <!----------------END OF MAIN------------------->
-<div class="right">
-    <!-----------------------Right start here-->
-    <div class="top">
-<button>
-    <button id="menu-btn">
-    <span class="material-icons">menu</span>
-</button>
-<div class="theme-toggler">
-    <span class="material-icons active">light_mode</span>
-    <span class="material-icons">dark_mode</span>
-</div>
-</div>
+    <!-----------------------End of top-->
+    
+    <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-news">
+        <div class="tradingview-widget-container__widget"></div>
+      </div>
+      
+        <!-- TradingView Widget END -->
+    </div> <!--------end of right-->
+    </div> <!------end of container-->
+    </body>
 
-<!-----------------------End of top-->
 
-<!-- TradingView Widget BEGIN -->
-<div class="tradingview-widget-news">
-    <div class="tradingview-widget-container__widget"></div>
-  </div>
-  
-    <!-- TradingView Widget END -->
-</div> <!--------end of right-->
-</div> <!------end of container-->
-</body>
+
 <footer class="footer">
     
     <p>&copy;2024 Rafael Gomez | All Rights Reserved</p>
   </footer>
 
     <!-- Add any JavaScript libraries or scripts here -->
-    <script src="scripts.js"></script>
-
+    
+    
 </html>

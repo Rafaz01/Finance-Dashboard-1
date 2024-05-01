@@ -379,7 +379,7 @@ main .wrapper > div span {
     padding: 0.2rem 1rem 0.5rem 1rem;
     border-radius: var(--border-radius-2);
     color: var(--color-secondary);
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 main .transaction {
     width: 100%;
