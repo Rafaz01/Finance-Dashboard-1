@@ -98,21 +98,26 @@ function loadTradingViewWidget(theme) {
 // Function to toggle between light and dark themes
 function toggleTheme() {
     const body = document.body;
+
     if (body.classList.contains('dark-theme')) {
         body.classList.remove('dark-theme');
-        loadTradingViewWidget('light'); // Load light theme
+        loadTradingViewWidget('light'); 
+        loadTradingViewNewsWidget('light');
     } else {
         body.classList.add('dark-theme');
-        loadTradingViewWidget('dark'); // Load dark theme
+        loadTradingViewWidget('dark');
+        loadTradingViewNewsWidget('dark');
     }
 }
 
 
 // Load initial TradingView widget with the appropriate theme
 loadTradingViewWidget('light'); // Load light theme by default
+
 // Change theme
 const themeToggler = document.querySelector(".theme-toggler");
 themeToggler.addEventListener('click', toggleTheme);
+
 // Change theme
 themeToggler.addEventListener('click', () => {
     document.body.classList.toggle('dark-theme-variables');
@@ -245,4 +250,30 @@ function saveTransaction() {
  localStorage.setItem("transactions", JSON.stringify(transactions));
 }
 
+// Function to load TradingView widget for news
+function loadTradingViewNewsWidget(theme) {
+    const widgetContainer = document.querySelector('.tradingview-widget-news');
 
+    // Remove existing TradingView widget
+    while (widgetContainer.firstChild) {
+        widgetContainer.removeChild(widgetContainer.firstChild);
+    }
+
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-timeline.js';
+    script.async = true;
+    script.text = JSON.stringify({
+        "feedMode": "market",
+        "market": "stock",
+        "isTransparent": false,
+        "displayMode": "regular",
+        "width": "350",
+        "height": "670",
+        "colorTheme": theme,
+        "locale": "en"
+    });
+    widgetContainer.appendChild(script);
+
+}
+loadTradingViewNewsWidget('light');
