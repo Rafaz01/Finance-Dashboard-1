@@ -6,7 +6,7 @@
     <title>Finance Dashboard</title>
     <link rel="icon" type="images/x-icon" href="/images/favicon.ico">
     <!-- Add any CSS libraries or stylesheets here -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/statics.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -77,44 +77,26 @@
 
   <!-- TradingView Widget END -->
   
-        <div class="insights">
-        
-            <div class="total-budget">
-                <h2>User Authentication</h2>
-    <form id="loginForm">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
-        <input type="checkbox" id="rememberMe" name="rememberMe">
-        <label for="rememberMe">Remember Me</label><br><br>
-        <button type="submit">Login</button>
-    </form>
-                       
-            </div>
-            <!---------------------end of budget-------------------------------->
-            <div class="expenses">
-                
-            </div>
-            <!-----------END OF EXPENSES--------------->
-
-             <!----------start of icome--------->
-            <div class="income-up">
-                
-            </div>
+  <div class="insights">
+    <div class="form">
+        <form id="userInfoForm">
+            <h2>User Information Form</h2>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
             
-            <!----------end of icome--------->
+            <input class="submit" type="submit" value="Submit">
+        </form>
+    </div>
+    <div id="welcomeMessage">
+        <h1>Welcome back, <span id="userName"></span>!</h1>
+        <h3>We're glad to see you again.</h3>
+    </div>
+</div>
 
-            <!-- Wrapper-->
-            <div class="wrapper">
-                
-        </div>
-        
-    <div class="transaction">
-        
-    </div>
-    
-    </div>
+                       
+           
     </main>
         <!----------------END OF MAIN------------------->
 <div class="right">
@@ -132,12 +114,7 @@
 
 <!-----------------------End of top-->
 
-<!-- TradingView Widget BEGIN -->
-<div class="tradingview-widget-news">
-    <div class="tradingview-widget-container__widget"></div>
-  </div>
-  
-    <!-- TradingView Widget END -->
+
 </div> <!--------end of right-->
 </div> <!------end of container-->
 </body>
@@ -147,6 +124,7 @@
   </footer>
 
     <!-- Add any JavaScript libraries or scripts here -->
+    <script src="cookies.js"></script>
     <script src="scripts.js"></script>
 
 </html>

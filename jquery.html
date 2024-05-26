@@ -17,8 +17,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Include Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="scripts.js"></script>
     <script src="jquery.js"></script>
+    
+    
     
 </head>
 <!-- TradingView Widget BEGIN -->
@@ -27,7 +28,6 @@
     <div class="tradingview-widget-container"></div>
   </div>
 </nav>
-<!-- TradingView Widget BEGIN -->
 <body>
     <div class ="container">
     <aside>
@@ -81,42 +81,31 @@
             
         <h1>Jquery</h1>
         
-    
-      <!-- TradingView Widget END -->
       
      <div class="insights">
             
-                <div class="total-budget">
+                <div class="chart">
                     
                     
                         <div id="pieChartContainer">
-                            <canvas id="expensePieChart" width="400" height="400"></canvas>
+                            <canvas id="expensePieChart" width="200" height="200"></canvas>
                         </div>
-                    
+                    </div>
                         <div class="expenses">
                         <div id="barChartContainer">
-                            <canvas id="incomeExpenseBarChart" width="400" height="400"></canvas>
+                            <canvas id="incomeExpenseBarChart" width="200" height="200"></canvas>
                         </div>
                 </div>
-                <!---------------------end of budget-------------------------------->
-            </div>
+
+                <div>
+                    <h2>Budget Chart</h2>
+
+                </div>
+                
+            
                     
                 
-                <!-----------END OF EXPENSES--------------->
-    
-                 <!----------start of icome--------->
-                
-                
-                <!----------end of icome--------->
-    
-                <!-- Wrapper-->
-                <div class="wrapper">
-                    
-            </div>
-            
-        <div class="transaction">
-            
-        </div>
+         </div>       
         
     
         </main>
@@ -135,15 +124,15 @@
     </div>
     
     <!-----------------------End of top-->
-    
-    <!-- TradingView Widget BEGIN -->
     <div class="tradingview-widget-news">
         <div class="tradingview-widget-container__widget"></div>
       </div>
-      
-        <!-- TradingView Widget END -->
+   
+        
     </div> <!--------end of right-->
+
     </div> <!------end of container-->
+
     </body>
 
 
@@ -154,6 +143,6 @@
   </footer>
 
     <!-- Add any JavaScript libraries or scripts here -->
-    
+    <script src="scripts.js"></script>
     
 </html>

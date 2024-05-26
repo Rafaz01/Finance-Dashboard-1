@@ -6,7 +6,7 @@
     <title>Finance Dashboard</title>
     <link rel="icon" type="images/x-icon" href="/images/favicon.ico">
     <!-- Add any CSS libraries or stylesheets here -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/statics.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -78,9 +78,13 @@
   <!-- TradingView Widget END -->
   
         <div class="insights">
-        
-            <div class="total-budget">
+            <div id="content">
+                <h1>Apple, Microsoft, Nvidia Tesla and Bitcoin</h1>
                 
+                <button id="fetchData">Fetch Data</button>
+                <div id="stockData"></div>
+                <div id="btcPrice"></div>
+                <div id="section">
                        
             </div>
             <!---------------------end of budget-------------------------------->
@@ -121,14 +125,9 @@
 </div>
 </div>
 
-<!-----------------------End of top-->
 
-<!-- TradingView Widget BEGIN -->
-<div class="tradingview-widget-news">
-    <div class="tradingview-widget-container__widget"></div>
-  </div>
   
-    <!-- TradingView Widget END -->
+   
 </div> <!--------end of right-->
 </div> <!------end of container-->
 </body>
@@ -139,5 +138,6 @@
 
     <!-- Add any JavaScript libraries or scripts here -->
     <script src="scripts.js"></script>
+    <script src="ajax.js"></script>
 
 </html>

@@ -1,72 +1,61 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const loginForm = document.getElementById('loginForm');
-    
-    loginForm.addEventListener('submit', function(event) {
+    // Check if user information is stored in a cookie
+    const userInfoCookie = document.cookie.split(';').find(cookie => cookie.trim().startsWith('userInfo='));
+    const userInfo = userInfoCookie ? JSON.parse(userInfoCookie.split('=')[1]) : null;
+
+    const userInfoForm = document.getElementById('userInfoForm');
+    const welcomeMessage = document.getElementById('welcomeMessage');
+    const userName = document.getElementById('userName');
+
+    if (userInfo) {
+        // If user information is found in the cookie, display welcome message
+        welcomeMessage.style.display = 'block';
+        userName.textContent = userInfo.name;
+    }
+
+    userInfoForm.addEventListener('submit', function(event) {
         event.preventDefault();
-        
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        const rememberMe = document.getElementById('rememberMe').checked;
 
-        // Perform authentication (e.g., send credentials to server for validation)
+        // Get user input from the form
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
 
-        // Simulate successful authentication
-        const isAuthenticated = true;
+        // Create an object to store user information
+        const userInfo = { name, email };
 
-        if (isAuthenticated) {
-            if (rememberMe) {
-                // Set a cookie to remember the user
-                setCookie('username', username, 30); // Expires in 30 days
-                setCookie('password', password, 30); // Expires in 30 days
-            } else {
-                // Clear any existing cookies
-                clearCookie('username');
-                clearCookie('password');
-            }
-            
-            alert('Login successful!');
-        } else {
-            alert('Invalid username or password.');
-        }
+        // Store user information in a cookie (valid for 30 days)
+        const expirationDate = new Date();
+        expirationDate.setDate(expirationDate.getDate() + 30);
+        document.cookie = `userInfo=${JSON.stringify(userInfo)}; expires=${expirationDate.toUTCString()}; path=/`;
+
+        // Display welcome message
+        welcomeMessage.style.display = 'block';
+        userName.textContent = userInfo.name;
+
+        // Clear form fields
+        userInfoForm.reset();
     });
 
-    // Check for Remember Me cookie on page load
-    const rememberedUsername = getCookie('username');
-    const rememberedPassword = getCookie('password');
+    // Function to set cookie
+    function setCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+    }
 
-    if (rememberedUsername && rememberedPassword) {
-        // Auto-fill login fields
-        document.getElementById('username').value = rememberedUsername;
-        document.getElementById('password').value = rememberedPassword;
-        document.getElementById('rememberMe').checked = true;
+    // Function to get cookie
+    function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
     }
 });
-
-// Function to set a cookie
-function setCookie(name, value, days) {
-    const date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    const expires = 'expires=' + date.toUTCString();
-    document.cookie = name + '=' + value + ';' + expires + ';path=/';
-}
-
-// Function to get a cookie by name
-function getCookie(name) {
-    const cookieName = name + '=';
-    const cookies = document.cookie.split(';');
-    for (let i = 0; i < cookies.length; i++) {
-        let cookie = cookies[i];
-        while (cookie.charAt(0) === ' ') {
-            cookie = cookie.substring(1);
-        }
-        if (cookie.indexOf(cookieName) === 0) {
-            return cookie.substring(cookieName.length, cookie.length);
-        }
-    }
-    return '';
-}
-
-// Function to clear a cookie by name
-function clearCookie(name) {
-    document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;';
-}

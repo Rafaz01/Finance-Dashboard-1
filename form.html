@@ -26,7 +26,7 @@
     <aside>
 <div class = "top">
     <div class="logo">
-        <img src="images/logo.png">
+        <img src="images/logo.webp">
         <h2>Finance <spa class="success">Manager</span></h2>
 <div class="close" id="close-btn">
     <span class="material-icons">close</span>
@@ -78,34 +78,63 @@
   <!-- TradingView Widget END -->
   
         <div class="insights">
-        
-            <div class="total-budget">
-                
-                       
-            </div>
-            <!---------------------end of budget-------------------------------->
-            <div class="expenses">
-                
-            </div>
-            <!-----------END OF EXPENSES--------------->
-
-             <!----------start of icome--------->
-            <div class="income-up">
-                
-            </div>
-            
-            <!----------end of icome--------->
-
-            <!-- Wrapper-->
             <div class="wrapper">
-                
+                <h1>Expense Tracker</h1>
+                <div class="position">
+                    <div>
+                    <h2>Total Balance</h2>
+                    <span id="balance">$0.00</span>
+                </div>
+                <div>
+                    <h3>Income</h3>
+                    <span id="income">$0.00</span>
+                </div>
+                <div>
+                    <h3>Expense</h3>
+                    <span id="expense">$0.00</span>
+                </div>
+            </div>
         </div>
-        
-    <div class="transaction">
-        
-    </div>
-    
-    </div>
+                <div class="transaction">
+                    <h1>Add transaction</h1>
+                    <form id="transactionForm">
+                        <div>
+                            <label for="type">
+                                <input type="checkbox" name="type" id="type" />
+                                <div class="option">
+                                    <span>Expense</span>
+                                    <span>Income</span>
+            
+                                </div>
+                            </label>
+            
+            
+            
+                        </div>
+                    <div>
+                        <label for="name">Name</label>
+                        <input type="text" name="name" required/>
+                    </div>
+                    <div>
+                        <label for="amount">Amount</label>
+                        <input type="number" name="amount" value="0" min= "0.01" step="0.01" required/>
+                    </div>
+                    <div>
+                        <label for="date">Date</label>
+                        <input type="date" name="date" required/>
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+                </div>
+                <div class="transactionList">
+                    <h1>Transactions</h1>
+                    <ul id="transactionList"></ul>
+                    <div id="status"></div>
+            
+            
+                </div>
+                </div>
+            
     </main>
         <!----------------END OF MAIN------------------->
 <div class="right">
@@ -123,12 +152,8 @@
 
 <!-----------------------End of top-->
 
-<!-- TradingView Widget BEGIN -->
-<div class="tradingview-widget-news">
-    <div class="tradingview-widget-container__widget"></div>
-  </div>
-  
-    <!-- TradingView Widget END -->
+
+    
 </div> <!--------end of right-->
 </div> <!------end of container-->
 </body>
@@ -139,5 +164,6 @@
 
     <!-- Add any JavaScript libraries or scripts here -->
     <script src="scripts.js"></script>
+    
 
 </html>

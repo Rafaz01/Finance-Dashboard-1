@@ -180,8 +180,8 @@ aside h3
 aside .sidebar a {
     display: flex;
     color: var(--color-info-dark);
-    margin: 2rem;
-    gap: 1rem;
+    margin: 1.2rem;
+    gap: 0.5rem;
     align-items: center;
     position: relative;
     height: 3.7rem;
@@ -230,6 +230,117 @@ aside .sidebar .message-count {
     font-size: 11px;
     border-radius: var(--border-radius-1);
     margin: 5px;
+}
+
+main {
+    margin-top: 1.4rem;
+}
+main h1 {
+    text-align: center;
+}
+main .insights  {
+    display: grid;
+    gap: 1.6rem;
+}
+
+form input, form button{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--color-info-dark);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    height: 42px;
+}
+form .submit {
+    background-color: var(--color-success);
+    color: var(--color-dark);
+    text-transform: uppercase;
+    box-shadow: var(--box-shadow);
+}
+ form label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+.insights #welcomeMessage
+{
+    text-align: center;
+}
+.insights #welcomeMessage h1
+{
+    color: var(--color-dark);
+   
+}
+.insights .container {
+    text-align: center;
+    display: block;
+    align-items: center;
+}
+
+.insights button {
+    background-color: var(--color-success);
+    border-radius: var(--border-radius-2);
+    width: 15rem;
+    height: 5rem;
+    display: block;
+    align-items: center;
+    margin: 10px 0 10px 500px ;
+    cursor: pointer;
+}
+.insights #welcomeMessage h3
+{
+    color: var(--color-dark);
+    font-size: large;
+   
+}
+.insights #welcomeMessage span {
+    color:var(--color-primary)
+}
+main .insights  > div {
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-top: 1rem;
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+}
+
+main .insights >div:hover {
+    box-shadow: none;
+}
+#pieChartContainer {
+    size: 100px;
+}
+.badge {
+    padding: 10px;
+    background: var(--color-success);
+    color:var(--color-dark);
+    border-radius: var(--border-radius-1);
+    margin: 10px 0 10px 500px ;
+    width: 250px;
+    align-items: center;
+  }
+.btc-badge {
+    padding: 10px;
+    background: var(--color-primary);
+    border-radius: 5px;
+    margin: 10px 0 10px 500px ;
+    box-shadow: black;
+    width: 250px;
+    color: var(--color-dark);
+  }
+#currentDate {
+    text-align: center;
+    font-weight: 700;
+    font: 2em sans-serif;
+}
+#futureDate {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+.form {
+   text-align: center;
+   font-size: 1.5em;
 }
 .right .top {
     display: flex;

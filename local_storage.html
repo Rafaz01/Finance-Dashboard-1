@@ -79,34 +79,64 @@
   
         <div class="insights">
         
-            <div class="total-budget">
-                
-                       
+                <div class="wrapper">
+                    <h1>Expense Tracker</h1>
+                    <div class="position">
+                        <div>
+                        <h2>Total Balance</h2>
+                        <span id="balance">$0.00</span>
+                    </div>
+                    <div>
+                        <h3>Income</h3>
+                        <span id="income">$0.00</span>
+                    </div>
+                    <div>
+                        <h3>Expense</h3>
+                        <span id="expense">$0.00</span>
+                    </div>
+                </div>
             </div>
-            <!---------------------end of budget-------------------------------->
-            <div class="expenses">
+                    <div class="transaction">
+                        <h1>Add transaction</h1>
+                        <form id="transactionForm">
+                            <div>
+                                <label for="type">
+                                    <input type="checkbox" name="type" id="type" />
+                                    <div class="option">
+                                        <span>Expense</span>
+                                        <span>Income</span>
                 
-            </div>
-            <!-----------END OF EXPENSES--------------->
-
-             <!----------start of icome--------->
-            <div class="income-up">
+                                    </div>
+                                </label>
                 
-            </div>
-            
-            <!----------end of icome--------->
-
-            <!-- Wrapper-->
-            <div class="wrapper">
                 
-        </div>
-        
-    <div class="transaction">
-        
-    </div>
-    
-    </div>
-    </main>
+                
+                            </div>
+                        <div>
+                            <label for="name">Name</label>
+                            <input type="text" name="name" required/>
+                        </div>
+                        <div>
+                            <label for="amount">Amount</label>
+                            <input type="number" name="amount" value="0" min= "0.01" step="0.01" required/>
+                        </div>
+                        <div>
+                            <label for="date">Date</label>
+                            <input type="date" name="date" required/>
+                        </div>
+                        <button type="submit">Submit</button>
+                    </form>
+                    </div>
+                    <div class="transactionList">
+                        <h1>Transactions</h1>
+                        <ul id="transactionList"></ul>
+                        <div id="status"></div>
+                
+                
+                    </div>
+                    </div>
+                
+        </main>
         <!----------------END OF MAIN------------------->
 <div class="right">
     <!-----------------------Right start here-->
