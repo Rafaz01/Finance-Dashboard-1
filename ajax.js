@@ -1,7 +1,10 @@
 // Function to fetch stock market data for Apple, Microsoft, Nvidia Tesla and Bitcoin
     // 
     function fetchStockData() {
-        const apiKey = 'Hdxzdv3ujUiz2z24OVBsvaLQD9INyxiu';
+        git add ajax.js
+        git commit --amend 
+        git push --all --force
+        git push --tags --force
         const symbols = ['AAPL', 'MSFT','NVDA','TSLA'];
         const apiUrl = `https://financialmodelingprep.com/api/v3/quote/${symbols.join(',')}?apikey=${apiKey}`;
   
